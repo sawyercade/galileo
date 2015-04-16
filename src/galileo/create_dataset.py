@@ -25,6 +25,7 @@ def get_average_exchange_rate (start_time):
 	seek = True
 
 	while (read_next_file):
+		try:
 		with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
 			reader = csv.reader(csvfile)
 			for line in reader:
@@ -37,8 +38,12 @@ def get_average_exchange_rate (start_time):
 					if(seek): #first row in first file probably isn't in range
 						continue
 					else:
-						read_next_file = false
+						read_next_file = False
+						break #think this is the right logic
 			file_num += 1
+		except IOError:
+			read_next_file = False
+			continue
 	return total / count
 
 with open(comments_filepath, 'rb') as comments_file:

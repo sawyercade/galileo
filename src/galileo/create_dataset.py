@@ -26,23 +26,25 @@ def get_average_exchange_rate (start_time):
 
 	while (read_next_file):
 		try:
-		with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
-			reader = csv.reader(csvfile)
-			for line in reader:
-				trade_time = line[0]
-				if ((trade_time >= start_time) & (trade_time <= start_time + time_period_seconds)):
-					seek = False
-					total += float(line[1])
-					count += 1
-				else:
-					if(seek): #first row in first file probably isn't in range
-						continue
+			with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
+				reader = csv.reader(csvfile)
+				for line in reader:
+					trade_time = line[0]
+					if ((trade_time >= start_time) & (trade_time <= start_time + time_period_seconds)):
+						seek = False
+						total += float(line[1])
+						count += 1
 					else:
-						read_next_file = False
-						break #think this is the right logic
-			file_num += 1
-		except IOError:
+						if(seek): #first row in first file probably isn't in range
+							continue
+						else:
+							read_next_file = False
+							break #think this is the right logic
+				file_num += 1
+		except IOError as e:
 			read_next_file = False
+			print("IOError for timestamp " + start_time)
+			print(e)
 			continue
 	return total / count
 

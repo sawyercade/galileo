@@ -18,8 +18,8 @@ time_period_seconds = int(sys.argv[4]) #length of time over which to get an aver
 
 # this is going to break if we don't have trade data for the period after a comment
 def get_average_exchange_rate (start_time):
-	print("start_time: " + str(start_time))
-	print("start_time + time_period_seconds: " + str(start_time + time_period_seconds))
+	#print("start_time: " + str(start_time))
+	#print("start_time + time_period_seconds: " + str(start_time + time_period_seconds))
 	total = 0.0
 	count = 0
 	file_num = (start_time - first_trade_day) / seconds_in_day
@@ -32,7 +32,7 @@ def get_average_exchange_rate (start_time):
                     return -1
 		try:
 			with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
-				print("filenum: " + str(file_num))
+			        #print("filenum: " + str(file_num))
 				reader = csv.reader(csvfile)
                                 read_days += 1
 				for line in reader:
@@ -50,8 +50,6 @@ def get_average_exchange_rate (start_time):
 				file_num += 1
 		except IOError as e:
 			read_next_file = False
-			print("IOError for timestamp " + str(start_time))
-			print(e)
 			return -1
 	return total / count
 
@@ -68,7 +66,7 @@ with open(comments_filepath, 'rb') as comments_file:
 			output_file.write(", ".join(line))
                         output_file.write("\n")
 			i += 1
-			if (i % 100 == 0):
+			if (i % 1000 == 0):
 				print(str(i) + " comments read")
 
 

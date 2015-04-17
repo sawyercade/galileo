@@ -28,7 +28,7 @@ def get_average_exchange_rate (start_time):
 	while (read_next_file):
 		try:
 			with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
-				print("filenum: " + str(filenum))
+				print("filenum: " + str(file_num))
 				reader = csv.reader(csvfile)
 				for line in reader:
 					trade_time = int(line[0])

@@ -29,7 +29,7 @@ def get_average_exchange_rate (start_time):
 			with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
 				reader = csv.reader(csvfile)
 				for line in reader:
-					trade_time = line[0]
+					trade_time = int(line[0])
 					if ((trade_time >= start_time) & (trade_time <= start_time + time_period_seconds)):
 						seek = False
 						total += float(line[1])

@@ -57,7 +57,7 @@ with open(comments_filepath, 'rb') as comments_file:
 			average = get_average_exchange_rate(time)
 			output = line + str(average)
 			output_file.write(", ".join(output))
-			i++
+			i += 1
 			if (i % 100 == 0):
 				print(i + " comments read")
 

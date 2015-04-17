@@ -62,12 +62,12 @@ with open(comments_filepath, 'rb') as comments_file:
                                 print(str(i) + " comments read.")
 			time = int(line[1]) / 1000 #comments time is in ms, not s
 			average = get_average_exchange_rate(time)
+                        i += 1
                         if (average == -1):
                             continue
                         line.append(str(average))
 			output_file.write(", ".join(line))
                         output_file.write("\n")
-			i += 1
 
 
 

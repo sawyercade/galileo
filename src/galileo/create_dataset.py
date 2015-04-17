@@ -8,7 +8,7 @@ mins_in_hour = 60
 hours_in_day = 60
 seconds_in_day = seconds_in_min * mins_in_hour * hours_in_day
 
-first_trade_day = 1315958400
+first_trade_day = 1313280000
 
 comments_filepath = sys.argv[1]
 split_filepath_format = sys.argv[2] #e.g. ../market/split_trades/split_btceUSD for split_btceUSD_1.csv, split_btceUSD_2.csv, etc

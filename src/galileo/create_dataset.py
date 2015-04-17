@@ -58,6 +58,8 @@ with open(comments_filepath, 'rb') as comments_file:
 		comments_reader = csv.reader(comments_file)
 		i = 0
 		for line in comments_reader:
+                        if(i % 1000 == 0):
+                                print(str(i) + " comments read.")
 			time = int(line[1]) / 1000 #comments time is in ms, not s
 			average = get_average_exchange_rate(time)
                         if (average == -1):
@@ -66,8 +68,6 @@ with open(comments_filepath, 'rb') as comments_file:
 			output_file.write(", ".join(line))
                         output_file.write("\n")
 			i += 1
-			if (i % 1000 == 0):
-				print(str(i) + " comments read")
 
 
 

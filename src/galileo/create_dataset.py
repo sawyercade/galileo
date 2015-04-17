@@ -19,6 +19,7 @@ time_period_seconds = int(sys.argv[4]) #length of time over which to get an aver
 # this is going to break if we don't have trade data for the period after a comment
 def get_average_exchange_rate (start_time):
 	print("start_time: " + str(start_time))
+	print("start_time + time_period_seconds: " + str(start_time + time_period_seconds))
 	total = 0.0
 	count = 0
 	file_num = (start_time - first_trade_day) / seconds_in_day

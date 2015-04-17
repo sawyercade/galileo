@@ -18,6 +18,7 @@ time_period_seconds = int(sys.argv[4]) #length of time over which to get an aver
 
 # this is going to break if we don't have trade data for the period after a comment
 def get_average_exchange_rate (start_time):
+	print("start_time: " + str(start_time))
 	total = 0.0
 	count = 0
 	file_num = (start_time - first_trade_day) / seconds_in_day
@@ -27,9 +28,11 @@ def get_average_exchange_rate (start_time):
 	while (read_next_file):
 		try:
 			with open(split_filepath_format + "_" + str(file_num) + ".csv") as csvfile:
+				print("filenum: " + str(filenum))
 				reader = csv.reader(csvfile)
 				for line in reader:
 					trade_time = int(line[0])
+					print("trade_time: " + str(trade_time))
 					if ((trade_time >= start_time) & (trade_time <= start_time + time_period_seconds)):
 						seek = False
 						total += float(line[1])
